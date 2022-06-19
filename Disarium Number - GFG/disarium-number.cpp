@@ -7,13 +7,13 @@ class Solution {
   public:
     int isDisarium(int N) {
         int init = N;
-        int length=0;
+        int length=0; // find out length of N
         while(N != 0){
         length++;    
         N/=10;
         }
         
-        N= init;
+        N= init; // resetting N's value
         
         int mod=0, temp;
         while(N>0){
