@@ -12,7 +12,6 @@ public:
                  }                
             if(output>compare) {compare=output;}
             else {continue;}
-            output = 1;
         }
         return compare;
     }
