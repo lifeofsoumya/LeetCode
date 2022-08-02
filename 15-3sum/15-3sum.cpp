@@ -17,7 +17,7 @@ public:
                         j++; k--;
                     }
                     else if( sum>0) k--; // if sum is >0, decrement k, as array is in increasing order
-                    else j++;
+                    else j++; // else sum is less, increment j as array is in increasing order
                 }
             }
         }
