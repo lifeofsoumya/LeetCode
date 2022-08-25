@@ -4,6 +4,9 @@ public:
         int n = matrix.size();
         int a = 0;
         int b = n-1;
+        
+        //check note for visualization
+        
         while(a<b){
             for(int i=0;i<(b-a);++i){
                 swap(matrix[a][a+i], matrix[a+i][b]);
