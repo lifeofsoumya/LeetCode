@@ -5,8 +5,8 @@ public:
         int maxn = INT_MIN;
         for( auto it : nums){
             sum += it; // add next number to sum
-            maxn = max(sum, maxn); // if sum is maximum then maxn = sum
-            if(sum < 0) sum = 0; // if sum is negative set sum to default 0
+            maxn = max(sum, maxn); // if sum is maximum then maxn = sum, which would be output
+            if(sum < 0) sum = 0; // if sum is negative set sum to default 0 : which is triggering point, making it O of n complexity
         }
         return maxn;
     }
