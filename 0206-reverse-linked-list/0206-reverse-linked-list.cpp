@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList(ListNode* head) { // imagine the problem like just rotating the arrows to the opposite side
         if (!head || !head->next) return head; // if nil then return head
 
         ListNode* p = head; // prev 1
