@@ -11,18 +11,31 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        ListNode* temp = head; 
-        vector<int> v;  // to store all the linked list values in vector
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* first = head;
         
-        while(temp!=NULL){
-            v.push_back(temp->val);
-            temp = temp->next; // converting ll to vector
+        while(fast && fast -> next){ // Get middle of linked list
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+                
+        // Reverse second part of linked list and separate it out, so it will be easier to add from both LL
+        ListNode *nextNode, *prev = NULL;
+        while (slow) {
+            nextNode = slow->next;
+            slow->next = prev;
+            prev = slow;
+            slow = nextNode;
         }
         
-        int sum = INT_MIN;
+        int sum = INT_MIN; 
         
-        for(int i = 0 ; i<v.size(); i++){
-            sum = max(sum, v[i]+v[v.size()-1-i]);
+        while(prev) // Get max sum of pairs
+        {
+            sum = max(sum, head -> val + prev -> val);
+            prev = prev -> next;
+            head = head -> next;
         }
         return sum;
     }
