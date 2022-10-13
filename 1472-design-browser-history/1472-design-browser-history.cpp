@@ -1,4 +1,4 @@
-class DoublyLinkedList{
+class DoublyLinkedList{ 
     public: 
         string val;
         DoublyLinkedList *prev, *next;
@@ -12,15 +12,15 @@ class DoublyLinkedList{
 
 class BrowserHistory {
 public:
-    DoublyLinkedList *curr;
+    DoublyLinkedList *curr; // node that represents current tab
     BrowserHistory(string homepage) {
-        DoublyLinkedList *root = new DoublyLinkedList(homepage);
+        DoublyLinkedList *root = new DoublyLinkedList(homepage); 
         curr = root;
     }
     
     void visit(string url) {
         DoublyLinkedList *newPage = new DoublyLinkedList(url); // new node created
-        curr->next = newPage;
+        curr->next = newPage; // when pointing to newPage, all history node's will be unlinked
         newPage->prev = curr;
         curr= curr->next; // curr is now newNode
     }
