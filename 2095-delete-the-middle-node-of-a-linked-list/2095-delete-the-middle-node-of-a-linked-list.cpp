@@ -28,6 +28,7 @@ public:
         prevSlow->next = slow->next;        //skipping middle element
         
         slow->next = NULL;
+        delete slow;
         
         return head;
         
