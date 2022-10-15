@@ -1,5 +1,4 @@
 class MyQueue {
-    stack<int> input, output;
 public:
     stack<int> s1; // output 
     stack<int> s2; // input
