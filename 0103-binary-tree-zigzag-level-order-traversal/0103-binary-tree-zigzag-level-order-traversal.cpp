@@ -28,7 +28,7 @@ public:
             for (int i = 0; i < size; i++) {
                 TreeNode* temp = q.front();
                 q.pop();
-                int index = (flag) ? i : (size - 1 - i);
+                int index = (flag) ? i : (size - 1 - i); // if flag true index = i, so insert from front, or insert in reverse
                 ans[index] = temp->val;
                 // size - 1 - i means reverse traverse
                 if (temp->left) {
