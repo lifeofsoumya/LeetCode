@@ -8,7 +8,6 @@
  */
 class Solution {
 public:
-    unordered_map<ListNode*, int> mp;
     bool hasCycle(ListNode *head) {
         if(!head || !head->next) return false;
         ListNode* slow=head;
