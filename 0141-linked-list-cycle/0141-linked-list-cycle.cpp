@@ -11,12 +11,13 @@ public:
     unordered_map<ListNode*, int> mp;
     bool hasCycle(ListNode *head) {
         if(!head || !head->next) return false;
-        while(head!=NULL){
-            if(mp.find(head) == mp.end()){ // if head not found, it returns end
-                mp[head]++;
-            }
-            else return true;            
-            head=head->next;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        
+        while(fast && fast->next){
+            slow = slow->next; // slow moves one
+            fast = fast->next->next; // fast moves two blocks
+            if(slow==fast) return true; // if they become same at some time = cycle, 
         }
         return false;
     
