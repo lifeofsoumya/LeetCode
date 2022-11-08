@@ -13,24 +13,24 @@ class BSTIterator {
 public:
     stack<TreeNode*> s;
     BSTIterator(TreeNode* root) {
-        partialInorder(root);
+        pushAll(root);
     }
     
-    void partialInorder(TreeNode* root){
-        while(root != NULL){
+    void pushAll(TreeNode* root){
+        while(root != NULL){ // pushes all the lefts to stack
             s.push(root);
-            root = root->left;
+            root = root->left; 
         }
     }
     
     int next() {
         TreeNode* top = s.top();
         s.pop();
-        partialInorder(top->right);
+        pushAll(top->right);
         return top->val;
     }
     
-    bool hasNext() {
+    bool hasNext() { // if stack empty no elem left
         return !s.empty();
     }
 };
