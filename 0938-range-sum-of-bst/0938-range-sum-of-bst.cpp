@@ -11,7 +11,14 @@
  */
 class Solution {
 public:
-    int rangeSumBST(TreeNode* root, int l, int h) {
-        return root==NULL  ?  0  :   ((root->val>h || root->val<l)? 0 : root->val)   +   rangeSumBST(root->left,l,h)  +  rangeSumBST(root->right,l,h);
+    int rangeSumBST(TreeNode* root, int L, int R) {
+      if(!root) return 0;      
+      if(root->val >= L && root->val <= R){
+        return root->val + rangeSumBST(root->left,L,R) + rangeSumBST(root->right,L,R);
+      }else if(root->val < L){
+        return rangeSumBST(root->right,L,R);
+      }else {
+        return rangeSumBST(root->left,L,R);
+      }
     }
 };
