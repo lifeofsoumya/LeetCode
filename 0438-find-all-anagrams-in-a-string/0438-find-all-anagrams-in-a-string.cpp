@@ -19,7 +19,7 @@ public:
             shash[s[i]-'a']++; // next letter added
             shash[s[i-k]-'a']--; // first letter of window removed
             
-            if(phash == shash) res.push_back(i+1-k);
+            if(phash == shash) res.push_back(i+1-k); // +1 is added coz by -k we're going behind character of first char of the window thus +1 to get the windows first char
         }
         return res;          
     }
