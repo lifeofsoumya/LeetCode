@@ -1,32 +1,26 @@
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        vector<int> ans;
-        vector<int> hash(26, 0);
+        
+        if(s.size()<p.size()) return {};
         vector<int> phash(26, 0);
-        int window = p.size();
-        int len = s.size();
-        if(len < window){
-            return ans;
+        vector<int> shash(26, 0);
+        vector<int> res;
+        int k = p.size();
+        
+        for(int i=0; i < k; i++){
+            phash[p[i] - 'a']++;
+            shash[s[i] - 'a']++;
         }
-        int left = 0,right = 0;
-        while(right < window){
-            phash[p[right] - 'a'] += 1;
-            hash[s[right] - 'a'] += 1;
-            right++;
+        
+        if(phash == shash) res.push_back(0); // checking the first window only
+        
+        for(int i = k ; i < s.size(); i++){
+            shash[s[i]-'a']++; // next letter added
+            shash[s[i-k]-'a']--; // first letter of window removed
+            
+            if(phash == shash) res.push_back(i+1-k);
         }
-        right -=1;
-        while(right < len){
-            if(phash == hash){
-                ans.push_back(left);
-            }
-            right+=1;
-            if(right != len){
-                hash[s[right] - 'a'] += 1;
-            }
-            hash[s[left] - 'a'] -=1 ;
-            left += 1;
-        }
-        return ans;
+        return res;          
     }
 };
