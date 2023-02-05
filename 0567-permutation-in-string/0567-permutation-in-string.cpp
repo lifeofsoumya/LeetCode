@@ -1,10 +1,4 @@
 class Solution {
-    bool areVectorsEqual(vector<int> a, vector<int> b){
-        for(int i=0; i<26; i++){
-            if(a[i]!=b[i]) return false;
-        }
-        return true;
-    }
 public:
     
 bool checkInclusion(string s1, string s2) {
@@ -19,7 +13,7 @@ bool checkInclusion(string s1, string s2) {
         freqS2[s2[j] - 'a']++;
 
         if (j - i + 1 == s1.size()) {
-            if (areVectorsEqual(freqS1, freqS2)) return true;
+            if (freqS1 == freqS2) return true;
             freqS2[s2[i] - 'a']--;
             i++;
         }
