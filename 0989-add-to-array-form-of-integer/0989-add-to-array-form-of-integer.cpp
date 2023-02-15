@@ -1,23 +1,17 @@
 class Solution {
 public:
-    vector<int> addToArrayForm(vector<int>& num, int k) {
-        vector<int> ans;
-        int n = num.size(), carry = 0, i = n-1;
-        while (k > 0 || i >= 0 || carry > 0) {
-            int sum = carry;
-            if (k > 0) {
-                int remainder = k % 10;
-                sum += remainder;
-                k = k / 10;
-            }
-            if (i >= 0) {
-                sum += num[i];
-                i--;
-            }
-            carry = sum / 10;
-            ans.push_back(sum % 10);
-        }
-        reverse(ans.begin(), ans.end());
-        return ans;
+    vector<int> addToArrayForm(vector<int> A, int K) {
+    for (int i = A.size() - 1; i >= 0 && K > 0; --i) {
+        A[i] += K;
+        K = A[i] / 10;
+        A[i] %= 10;
+    }
+    
+    while (K > 0) {
+        A.insert(A.begin(), K % 10);
+        K /= 10;
+    }
+
+    return A;
     }
 };
