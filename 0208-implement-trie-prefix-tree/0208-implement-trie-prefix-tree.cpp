@@ -2,13 +2,12 @@ class TrieNode{
     public:
     char data;
     TrieNode* children[26];
-    bool isTerminal;    
+    bool isTerminal = false;    
     TrieNode(int val){
         data = val;
         for(int i = 0 ; i<26; i++){
             children[i] = NULL;
         }
-        isTerminal = false;
     }
 };
 
