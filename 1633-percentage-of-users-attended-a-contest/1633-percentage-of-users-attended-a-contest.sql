@@ -1,4 +1,5 @@
-select s2.contest_id, round((count(s2.contest_id)/(select count(*) from Users))*100,2) as percentage from Users s1 left join Register s2
-on s1.user_id = s2.user_id
-group by s2.contest_id having s2.contest_id is not null
-order by percentage desc, s2.contest_id asc
+SELECT r.contest_id, ROUND(COUNT(r.contest_id)/(SELECT COUNT(*) FROM Users)*100, 2) as percentage
+FROM Users u 
+LEFT JOIN Register r ON u.user_id = r.user_id
+GROUP BY r.contest_id HAVING r.contest_id IS NOT NULL
+ORDER BY percentage desc, r.contest_id ASC
