@@ -4,15 +4,14 @@
  */
 var moveZeroes = function(nums) {
     if(nums.length == 0) return nums;
-    let insertPosition = 0;
-    for(let i = 0; i < nums.length; i++){
+    let pos = 0;
+    for(let i = 0; i < nums.length ; i++){
         if(nums[i] !== 0){
-            nums[insertPosition++] = nums[i]
+            nums[pos++] = nums[i]; // it only creates array from non 0 values
         }
     }
-    while (insertPosition < nums.length) {
-        nums[insertPosition++] = 0;
+    while(pos < nums.length){
+        nums[pos++] = 0; // it inserts 0 till length matched
     }
-    
     return nums;
 };
