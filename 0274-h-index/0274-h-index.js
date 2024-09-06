@@ -1,22 +1,18 @@
+/**
+ * @param {number[]} citations
+ * @return {number}
+ */
 var hIndex = function(citations) {
-    const n = citations.length;
-    const count = new Array(n + 1).fill(0);
+    citations.sort((a,b)=> a-b);
+    let n = citations.length;
+    let res = 0;
     
-    for (let c of citations) {
-        if (c >= n) {
-            count[n]++;
-        } else {
-            count[c]++;
+    for(let i=0; i < n; i++){
+        if(citations[i] >= n - i){
+            res = n - i;
+            break;
         }
     }
-    
-    let total = 0;
-    for (let i = n; i >= 0; i--) {
-        total += count[i];
-        if (total >= i) {
-            return i;
-        }
-    }
-    
-    return 0;
+    return res;
 };
+
